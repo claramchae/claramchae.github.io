@@ -1,10 +1,10 @@
 ---
 title: "Clara Chae"
-image: desktop/stuff/WebsitePhoto.JPG
+image: photos/headshot.jpeg
 toc: false
 about: 
   template: jolla
-  image-shape: round
+  image-shape: rectangle
   image-width: 17em
   links:
     - text: LinkedIn
@@ -18,5 +18,3 @@ about:
 ---
 
 Welcome to my website!
-
-

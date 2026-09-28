@@ -1,7 +1,22 @@
 ---
-title: "claramchae.github.io"
+title: "Clara Chae"
+image: desktop/stuff/WebsitePhoto.JPG
+toc: false
+about: 
+  template: jolla
+  image-shape: round
+  image-width: 17em
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/clara-chae-041946226/
+      target: _blank
+    - text: GitHub
+      href: https://github.com/claramchae
+      target: _blank 
+    - text: Email
+      href: mailto:cmct2023@mymail.pomona.edu
 ---
 
-This is a Quarto website.
+Welcome to my website!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+

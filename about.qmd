@@ -1,5 +1,20 @@
 ---
-title: "About"
+title: "Clara Chae"
+image: photos/headshot.jpeg
+toc: false
+about: 
+  template: jolla
+  image-shape: rectangle
+  image-width: 17em
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/clara-chae-041946226/
+      target: _blank
+    - text: GitHub
+      href: https://github.com/claramchae
+      target: _blank 
+    - text: Email
+      href: mailto:cmct2023@mymail.pomona.edu
 ---
 
-About this site
+Hi! My name is Clara, and I'm a senior at Pomona College studying Environmental Analysis and Economics. I am from Boston, MA, play for the Pomona-Pitzer Women's Golf Team, and love spending time outside (the photo above is me on the Beehive Trail in Acadia National Park this past summer!). 

@@ -1,9 +1,16 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Clara Chae",
+    "section": "",
+    "text": "Hi! My name is Clara, and I’m a senior at Pomona College studying Environmental Analysis and Economics. I am from Boston, MA, play for the Pomona-Pitzer Women’s Golf Team, and love spending time outside (the photo above is me on the Beehive Trail in Acadia National Park this past summer!)."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Clara Chae",
     "section": "",
-    "text": "Welcome to my website!"
+    "text": "Hi! My name is Clara, and I’m a senior at Pomona College studying Environmental Analysis and Economics. I am from Boston, MA, play for the Pomona-Pitzer Women’s Golf Team, and love spending time outside (the photo above is me on the Beehive Trail in Acadia National Park this past summer!)."
   }
 ]

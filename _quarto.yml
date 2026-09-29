@@ -5,10 +5,13 @@ project:
 website:
   title: "claramchae.github.io"
   navbar:
+    background: "#A2D909"
+    foreground: "#484F32"
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: About
 
 format:
   html:

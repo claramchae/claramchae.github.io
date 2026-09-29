@@ -1,20 +1,5 @@
 ---
-title: "Clara Chae"
-image: photos/headshot.jpeg
-toc: false
-about: 
-  template: jolla
-  image-shape: rectangle
-  image-width: 17em
-  links:
-    - text: LinkedIn
-      href: https://www.linkedin.com/in/clara-chae-041946226/
-      target: _blank
-    - text: GitHub
-      href: https://github.com/claramchae
-      target: _blank 
-    - text: Email
-      href: mailto:cmct2023@mymail.pomona.edu
+
 ---
 
-Welcome to my website!
+

@@ -2,7 +2,7 @@
 title: "Country Music Lyrics"
 subtitle: "Data visualizations of country music lyrics"
 ---
-Data source: [TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-08-25/readme.md), curated by [Ntokebo Sosibo](https://github.com/afrikaniz3d-za). 
+Data source: [TidyTuesday - Week 34, 2026](https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-08-25/readme.md), curated by [Ntokebo Sosibo](https://github.com/afrikaniz3d-za). 
 
 ```{r}
 library(tidyverse)

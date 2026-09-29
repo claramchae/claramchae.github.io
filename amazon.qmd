@@ -1,0 +1,42 @@
+---
+title: Amazon Annual Reports
+subtitle: Data visualizations of language used in Amazon's annual reports
+---
+Data source: [TidyTuesday - Week 12 2025](https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-03-25/readme.md), curated by [Gregory Vander Vinne](https://github.com/GregoryVdvinne)
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+report_words_clean <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-03-25/report_words_clean.csv')
+```
+
+The following graph shows the frequency of five common sustainability "buzzwords" in Amazon's annual reports from 2005 to 2023. Environment includes both "environment" and "environmental", and sustainable includes both "sustainable" and "sustainability."
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show the code"
+
+buzzwords <- report_words_clean |>
+    mutate(
+        sustainable = str_detect(word, "sustainab"),
+        environment = str_detect(word, "environment"),
+        climate = str_detect(word, "climate"),
+        carbon = str_detect(word, "carbon"),
+        emissions = str_detect(word, "emission")
+    ) |>
+    group_by(year) |>
+    summarize(across(sustainable:emissions, sum)) |>
+    pivot_longer(cols = -year, names_to = "word", values_to = "n")
+
+ggplot(data = buzzwords, aes(x = year, y = n)) +
+    geom_line(aes(color = word)) +
+    labs(
+        x = "Year",
+        y = "Number of occurances",
+        title = "Frequency of sustainability buzzwords \n in Amazon annual reports, 2005-2023",
+        color = "Buzzword"
+    )
+```

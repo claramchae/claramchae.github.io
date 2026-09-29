@@ -18,6 +18,20 @@
     "href": "country.html",
     "title": "Country Music Lyrics",
     "section": "",
-    "text": "Data source: TidyTuesday, curated by Ntokebo Sosibo.\nThe following bar graph looks at artists with 10 or more songs that reached the Country Top 30 from 2013-2019 and the proportion of those songs that contained the word “beer” in their lyrics.\n\n\nShow the code\nwordmentions &lt;- country_lyrics |&gt;\n    mutate(beer = str_detect(lyrics, \"beer\")) |&gt;\n    group_by(artist) |&gt;\n    summarize(\n        number = n(),\n        pct_beer = mean(beer, na.rm = TRUE)) |&gt;\n    filter(number&gt;=10) \n\nggplot(data = wordmentions, aes(x = artist, y = pct_beer)) +\n    geom_bar(stat = \"identity\") +\n    coord_flip() +\n    labs(\n        x = \"Artist\", \n        y = \"Percent of songs that mention beer\",\n        title = \"Beer mentions by artists for \\nTop 30 country songs,  2013-2019\")"
+    "text": "Data source: TidyTuesday - Week 34, 2026, curated by Ntokebo Sosibo.\nThe following bar graph looks at artists with 10 or more songs that reached the Country Top 30 from 2013-2019 and the proportion of those songs that contained the word “beer” in their lyrics.\n\n\nShow the code\nwordmentions &lt;- country_lyrics |&gt;\n    mutate(beer = str_detect(lyrics, \"beer\")) |&gt;\n    group_by(artist) |&gt;\n    summarize(\n        number = n(),\n        pct_beer = mean(beer, na.rm = TRUE)) |&gt;\n    filter(number&gt;=10) \n\nggplot(data = wordmentions, aes(x = artist, y = pct_beer)) +\n    geom_bar(stat = \"identity\") +\n    coord_flip() +\n    labs(\n        x = \"Artist\", \n        y = \"Percent of songs that mention beer\",\n        title = \"Beer mentions by artists for \\nTop 30 country songs,  2013-2019\")"
+  },
+  {
+    "objectID": "tidytuesday2.html",
+    "href": "tidytuesday2.html",
+    "title": "Amazon Annual Reports",
+    "section": "",
+    "text": "Data source: TidyTuesday, curated by Gregory Vander Vinne"
+  },
+  {
+    "objectID": "amazon.html",
+    "href": "amazon.html",
+    "title": "Amazon Annual Reports",
+    "section": "",
+    "text": "Data source: TidyTuesday - Week 12 2025, curated by Gregory Vander Vinne\nThe following graph shows the frequency of five common sustainability “buzzwords” in Amazon’s annual reports from 2005 to 2023. Environment includes both “environment” and “environmental”, and sustainable includes both “sustainable” and “sustainability.”\n\n\nShow the code\nbuzzwords &lt;- report_words_clean |&gt;\n    mutate(\n        sustainable = str_detect(word, \"sustainab\"),\n        environment = str_detect(word, \"environment\"),\n        climate = str_detect(word, \"climate\"),\n        carbon = str_detect(word, \"carbon\"),\n        emissions = str_detect(word, \"emission\")\n    ) |&gt;\n    group_by(year) |&gt;\n    summarize(across(sustainable:emissions, sum)) |&gt;\n    pivot_longer(cols = -year, names_to = \"word\", values_to = \"n\")\n\nggplot(data = buzzwords, aes(x = year, y = n)) +\n    geom_line(aes(color = word)) +\n    labs(\n        x = \"Year\",\n        y = \"Number of occurances\",\n        title = \"Frequency of sustainability buzzwords \\n in Amazon annual reports, 2005-2023\",\n        color = \"Buzzword\"\n    )"
   }
 ]

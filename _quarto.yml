@@ -14,8 +14,8 @@ website:
         menu:
           - href: country.qmd
             text: Country Music Lyrics
-          - tidytuesday2.qmd
-        
+          - href: amazon.qmd
+            text: Amazon Annual Reports
 
 format:
   html:

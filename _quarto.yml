@@ -8,10 +8,14 @@ website:
     background: "#A2D909"
     foreground: "#484F32"
     left:
-      - href: index.qmd
-        text: Home
       - href: about.qmd
         text: About
+      - text: Data Viz
+        menu:
+          - href: country.qmd
+            text: Country Music Lyrics
+          - tidytuesday2.qmd
+        
 
 format:
   html:
@@ -21,5 +25,10 @@ format:
     css: styles.css
     toc: true
 
-
+execute: 
+  echo: false
+  warning: false
+  message: false
+  
+  
 

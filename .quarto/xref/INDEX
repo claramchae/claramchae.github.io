@@ -4,5 +4,11 @@
   },
   "about.qmd": {
     "about.html": "5a4b69a1"
+  },
+  "country.qmd": {
+    "country.html": "b17bd872"
+  },
+  "tidytuesday2.qmd": {
+    "tidytuesday2.html": "814f0bc7"
   }
 }

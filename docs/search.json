@@ -12,5 +12,12 @@
     "title": "Clara Chae",
     "section": "",
     "text": "Hi! My name is Clara, and I’m a senior at Pomona College studying Environmental Analysis and Economics. I am from Boston, MA, play for the Pomona-Pitzer Women’s Golf Team, and love spending time outside (the photo above is me on the Beehive Trail in Acadia National Park this past summer!)."
+  },
+  {
+    "objectID": "country.html",
+    "href": "country.html",
+    "title": "Country Music Lyrics",
+    "section": "",
+    "text": "Data source: TidyTuesday, curated by Ntokebo Sosibo.\nThe following bar graph looks at artists with 10 or more songs that reached the Country Top 30 from 2013-2019 and the proportion of those songs that contained the word “beer” in their lyrics.\n\n\nShow the code\nwordmentions &lt;- country_lyrics |&gt;\n    mutate(beer = str_detect(lyrics, \"beer\")) |&gt;\n    group_by(artist) |&gt;\n    summarize(\n        number = n(),\n        pct_beer = mean(beer, na.rm = TRUE)) |&gt;\n    filter(number&gt;=10) \n\nggplot(data = wordmentions, aes(x = artist, y = pct_beer)) +\n    geom_bar(stat = \"identity\") +\n    coord_flip() +\n    labs(\n        x = \"Artist\", \n        y = \"Percent of songs that mention beer\",\n        title = \"Beer mentions by artists for \\nTop 30 country songs,  2013-2019\")"
   }
 ]

@@ -1,0 +1,37 @@
+---
+title: "Country Music Lyrics"
+subtitle: "Data visualizations of country music lyrics"
+---
+Data source: [TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-08-25/readme.md), curated by [Ntokebo Sosibo](https://github.com/afrikaniz3d-za). 
+
+```{r}
+library(tidyverse)
+```
+```{r}
+country_lyrics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-08-25/country_lyrics.csv')
+```
+
+The following bar graph looks at artists with 10 or more songs that reached the Country Top 30 from 2013-2019 and the proportion of those songs that contained the word "beer" in their lyrics.
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show the code"
+
+wordmentions <- country_lyrics |>
+    mutate(beer = str_detect(lyrics, "beer")) |>
+    group_by(artist) |>
+    summarize(
+        number = n(),
+        pct_beer = mean(beer, na.rm = TRUE)) |>
+    filter(number>=10) 
+
+ggplot(data = wordmentions, aes(x = artist, y = pct_beer)) +
+    geom_bar(stat = "identity") +
+    coord_flip() +
+    labs(
+        x = "Artist", 
+        y = "Percent of songs that mention beer",
+        title = "Beer mentions by artists for \nTop 30 country songs,  2013-2019")
+```
+

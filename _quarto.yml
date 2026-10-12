@@ -16,6 +16,8 @@ website:
             text: Country Music Lyrics
           - href: amazon.qmd
             text: Amazon Annual Reports
+          - href: office.qmd
+            text: The Office Lines
 
 format:
   html:

@@ -1,0 +1,13 @@
+---
+title: "The Office Lines"
+subtitle: "Text analysis of The Office Lines"
+---
+Data source: [The Office Lines on Kaggle](https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines/data), curated by [Fabrizio Cominetti](https://www.kaggle.com/fabriziocominetti). 
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+
+```

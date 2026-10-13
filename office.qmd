@@ -91,7 +91,7 @@ ggplot(data = accents, aes(x = accent_type)) +
         y = "Number of lines",
         fill = "Character",
         color = "Character",
-        caption = paste0(
+        caption = str_c(
             str_wrap("* Other character includes characters who used accents in fewer than two lines (i.e. Oscar, Meredith, Karen, Billy, Deangelo, and Alan", width = 120), 
         "\n\n",
         str_wrap("** Other accent type includes unspecified accent types", width = 120))

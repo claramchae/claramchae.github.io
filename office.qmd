@@ -9,5 +9,98 @@ library(tidyverse)
 ```
 
 ```{r}
-
+office <- read.csv("theofficelines.csv")
 ```
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show the code"
+
+library(tidyverse)
+
+office <- read.csv("theofficelines.csv")
+
+accents <- office |>
+    filter(str_detect(Line, "accent.*\\]")) |>
+    mutate(
+        accent_type = str_extract(Line, "(\\w+(?=\\s+accent))"),
+        accent_type = str_to_title(accent_type),
+        accent_type = replace_na(accent_type, "Other"),
+        accent_type = as.factor(accent_type),
+        accent_type = fct_recode(accent_type, 
+            "New York" = "York",
+            "Clint Eastwood" = "Eastwood",
+            "Italian" = "Itialian",
+            "Vietnamese" = "Ping"),
+        accent_type = fct_collapse(accent_type, "Other" = c("In", "Using", "Feigning", "Her", "With", "Same"))
+    ) |>
+    mutate(accent_type1 = fct_lump_min(accent_type, 2),
+        accent_type1 = fct_rev(fct_infreq(accent_type1))
+    ) |>
+    mutate(Character = as.factor(Character),
+        Character = fct_recode(Character, "Michael" = "“Jo”"),
+        Character = fct_infreq(Character)
+    )
+
+
+accent_colors <- c(
+  "#7244bb", "#F3C300", "#be79cd", "#f0aa55",
+  "#A1CAF1", "#BE0032", "#d3c59b", "#309e91",
+  "#78ab64", "#E68FAC", "#0067A5", "#ff6e2f"
+)
+
+ggplot(data = accents, aes(x = Character)) +
+    geom_bar(aes(fill = accent_type1)) +
+    coord_flip() +
+    labs(title = "Accent Usage in The Office (by character)",
+        y = "Number of lines",
+        fill = "Accent Type",
+        color = "Accent Type",
+        caption = str_wrap("* Other includes accents used in fewer than two lines or unspecified accent types (i.e. New York, Yankee, Western, Spanish, Russian, Oriental, Jamaican, Irish, Indian, and Clint Eastwood)", width = 120)
+    ) +
+    scale_fill_manual(values = accent_colors) +
+    theme(plot.caption = element_text(hjust = 0),
+    plot.caption.position = "plot",
+    plot.title = element_text(hjust = 0),
+    plot.title.position = "plot")
+```
+
+This above plot tells us that, to likely no one's surprise, Michael is the character with the most lines delivered in an accent. Also unsurprisingly, he is followed by Andy, Dwight, and Holly as other common employers of accents. Of the major characters in The Office, it is notable that Phyllis, Stanley, Toby, Ryan, Angela, and Creed are not present in this data, meaning they had no lines for which they were scripted to use an accent.  
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show the code"
+
+character_colors <- c(
+  "#7244bb", "#F3C300", "#be79cd", "#f0aa55",
+  "#A1CAF1", "#BE0032", "#d3c59b", "#309e91",
+  "#78ab64", "#E68FAC", "#0067A5"
+)
+
+accents <- accents |>
+    mutate(character = fct_lump_min(Character, 2)) |>
+    mutate(accent_type = fct_infreq(accent_type))
+
+ggplot(data = accents, aes(x = accent_type)) +
+    geom_bar(aes(fill = character)) +
+    coord_flip() +
+    labs(title = "Accent Usage in The Office (by accent type)",
+        x = "Accent Type",
+        y = "Number of lines",
+        fill = "Character",
+        color = "Character",
+        caption = paste0(
+            str_wrap("* Other character includes characters who used accents in fewer than two lines (i.e. Oscar, Meredith, Karen, Billy, Deangelo, and Alan", width = 120), 
+        "\n\n",
+        str_wrap("** Other accent type includes unspecified accent types", width = 120))
+    ) +
+    scale_fill_manual(values = character_colors) +
+    theme(plot.caption = element_text(hjust = 0), 
+    plot.caption.position = "plot",
+    plot.title = element_text(hjust = 0),
+    plot.title.position = "plot")
+```
+
+This second plot shows that the most common specified accent type throughout The Office series is British, and it is most freqeuntly employed by Andy. The second most common type is Australian, which is used by Kevin, Dwight, Andy, and Michael. Andy is also the most frequent user of the third most common accent type, Cockney.

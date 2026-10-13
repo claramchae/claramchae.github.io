@@ -18,6 +18,10 @@ The following bar graph looks at artists with 10 or more songs that reached the 
 #| code-fold: true
 #| code-summary: "Show the code"
 
+library(tidyverse)
+
+country_lyrics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-08-25/country_lyrics.csv')
+
 wordmentions <- country_lyrics |>
     mutate(beer = str_detect(lyrics, "beer")) |>
     group_by(artist) |>

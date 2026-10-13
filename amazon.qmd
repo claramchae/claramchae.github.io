@@ -18,6 +18,9 @@ The following graph shows the frequency of five common sustainability "buzzwords
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show the code"
+library(tidyverse)
+
+report_words_clean <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-03-25/report_words_clean.csv')
 
 buzzwords <- report_words_clean |>
     mutate(

@@ -26,14 +26,14 @@ accents <- office |>
     mutate(
         accent_type = str_extract(Line, "(\\w+(?=\\s+accent))"),
         accent_type = str_to_title(accent_type),
-        accent_type = replace_na(accent_type, "Other"),
+        accent_type = replace_na(accent_type, "Unspecified"),
         accent_type = as.factor(accent_type),
         accent_type = fct_recode(accent_type, 
             "New York" = "York",
             "Clint Eastwood" = "Eastwood",
             "Italian" = "Itialian",
             "Vietnamese" = "Ping"),
-        accent_type = fct_collapse(accent_type, "Other" = c("In", "Using", "Feigning", "Her", "With", "Same"))
+        accent_type = fct_collapse(accent_type, "Unspecified" = c("In", "Using", "Feigning", "Her", "With", "Same"))
     ) |>
     mutate(accent_type1 = fct_lump_min(accent_type, 2),
         accent_type1 = fct_rev(fct_infreq(accent_type1))
@@ -47,7 +47,7 @@ accents <- office |>
 accent_colors <- c(
   "#7244bb", "#F3C300", "#be79cd", "#f0aa55",
   "#A1CAF1", "#BE0032", "#d3c59b", "#309e91",
-  "#78ab64", "#E68FAC", "#0067A5", "#ff6e2f"
+  "#78ab64", "#E68FAC", "#0067A5", "#ff6e2f", "#2fa1ff"
 )
 
 ggplot(data = accents, aes(x = Character)) +
@@ -57,7 +57,7 @@ ggplot(data = accents, aes(x = Character)) +
         y = "Number of lines",
         fill = "Accent Type",
         color = "Accent Type",
-        caption = str_wrap("* Other includes accents used in fewer than two lines or unspecified accent types (i.e. New York, Yankee, Western, Spanish, Russian, Oriental, Jamaican, Irish, Indian, and Clint Eastwood)", width = 120)
+        caption = str_wrap("* Other includes accents used in fewer than two lines (i.e. New York, Yankee, Western, Spanish, Russian, Oriental, Jamaican, Irish, Indian, and Clint Eastwood)", width = 120)
     ) +
     scale_fill_manual(values = accent_colors) +
     theme(plot.caption = element_text(hjust = 0),
@@ -91,10 +91,7 @@ ggplot(data = accents, aes(x = accent_type)) +
         y = "Number of lines",
         fill = "Character",
         color = "Character",
-        caption = str_c(
-            str_wrap("* Other character includes characters who used accents in fewer than two lines (i.e. Oscar, Meredith, Karen, Billy, Deangelo, and Alan", width = 120), 
-        "\n\n",
-        str_wrap("** Other accent type includes unspecified accent types", width = 120))
+        caption = str_wrap("* Other character includes characters who used accents in fewer than two lines (i.e. Oscar, Meredith, Karen, Billy, Deangelo, and Alan", width = 120)
     ) +
     scale_fill_manual(values = character_colors) +
     theme(plot.caption = element_text(hjust = 0), 

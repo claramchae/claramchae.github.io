@@ -18,6 +18,8 @@ website:
             text: Amazon Annual Reports
           - href: office.qmd
             text: The Office Lines
+          - href: roomdraw.qmd
+            text: Pomona College Room Draw
 
 format:
   html:

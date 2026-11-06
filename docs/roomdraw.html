@@ -225,6 +225,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="simulation" class="level3">
 <h3 class="anchored" data-anchor-id="simulation">Simulation:</h3>
+<p>After housing times are assigned, students are still sometimes unsure whether they will be able to get a Sontag or Dialynas suite, which is due to some students with very early times simply not wanting to live in a suite and thus selecting a single elsewhere or some students with very early times being pulled up into a suite by a friend with an even earlier time. These slight variations mean that it is not just the first 31 students who get the suites. For fall 2025, the last Sontag/Dialynas suite was selected at 5:27pm, and for fall 2026 it was as late as 5:33pm.</p>
+<p>So, for the students just on the cusp of early, how likely is it that Sontag/Dialynas suites will still be available when they select housing?</p>
 <p><strong>Assumptions:</strong><br>
 1. Not all students will want to select a suite in Sontag or Dialynas. The number of students who decline to choose one of these suites despite having an early enough time is randomly distributed between 0 and 5.<br>
 2. Sometimes, students will pull up someone else with an early time. The number of students pulled up is also randomly distributed between 0 and 5.</p>
@@ -290,7 +292,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The primary insight is that, as one might expect, when we create the possibility that students may not want to select a Sontag or Dialynas suite even if they have an early enough time or that some students with early times are pulled up by other students with even earlier times, students assigned slightly later times (between ~5:24 and 5:27pm) have a higher chance of getting one of these suites. This slight difference can be seen when comparing the two graphs. In other words, room draw is highly competitive, but sometimes those few declining or pulled-up students make a huge difference for students with the 5:24 and 5:27pm times.</p>
+<p>The primary insight is that, as one might expect, when we create the possibility that students may not want to select a Sontag or Dialynas suite even if they have an early enough time or that some students with early times are pulled up by other students with even earlier times, students assigned slightly later times (between ~5:21 and 5:27pm) have a higher chance of getting one of these suites. This slight difference can be seen when comparing the two graphs. One can also see that the 5:18pm time is where the probability begins dropping off for the the first scenario, while it begins falling at 5:15pm in the default scenario where every student selects a Sontag/Dialynas suite when they can.</p>
+<p>In other words, room draw is highly competitive, but sometimes those few declining or pulled-up students make a huge difference for students with the 5:21, 5:24, and 5:27pm times.</p>
 
 
 </section>
